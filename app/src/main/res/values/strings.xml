@@ -6,4 +6,6 @@
     <string name="button_clear_deeplink">Clear Deeplink</string>
 
     <string name="text_title_deeplink_history">Last 10 used deeplink</string>
+    <string name="text_title_deeplink_history_no_item">No History</string>
+    <string name="text_content_deeplink_history_no_item">Let\'s start to use Deeplink Tester</string>
 </resources>
