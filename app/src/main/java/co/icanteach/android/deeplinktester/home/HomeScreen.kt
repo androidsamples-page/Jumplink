@@ -62,6 +62,19 @@ fun HomeScreenResult(
 ) {
 
     if (uiState.historyItems.isEmpty()) {
+        HomeScreenStateWithNoDeepLinkHistory(
+            enteredContent = uiState.enteredContent,
+            onTestDeeplinkClicked = {
+                onTestDeeplinkClicked.invoke()
+            },
+            onClearDeeplinkClicked = {
+                onClearDeeplinkClicked.invoke()
+            },
+            onEnteredContent = { enteredContent ->
+                onEnteredContent.invoke(enteredContent)
+            }
+        )
+    } else {
         HomeScreenStateWithDeepLinkHistory(
             enteredContent = uiState.enteredContent,
             onTestDeeplinkClicked = {
@@ -74,19 +87,6 @@ fun HomeScreenResult(
                 onEnteredContent.invoke(enteredContent)
             },
             historyDeepLinkItems = uiState.historyItems
-        )
-    } else {
-        HomeScreenStateWithNoDeepLinkHistory(
-            enteredContent = uiState.enteredContent,
-            onTestDeeplinkClicked = {
-                onTestDeeplinkClicked.invoke()
-            },
-            onClearDeeplinkClicked = {
-                onClearDeeplinkClicked.invoke()
-            },
-            onEnteredContent = { enteredContent ->
-                onEnteredContent.invoke(enteredContent)
-            }
         )
     }
 }
