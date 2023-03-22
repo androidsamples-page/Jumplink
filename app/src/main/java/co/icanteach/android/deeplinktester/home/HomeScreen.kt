@@ -61,33 +61,35 @@ fun HomeScreenResult(
     onClearDeeplinkClicked: () -> Unit,
 ) {
 
-    if (uiState.historyItems.isEmpty()) {
-        HomeScreenStateWithNoDeepLinkHistory(
-            enteredContent = uiState.enteredContent,
-            onTestDeeplinkClicked = {
-                onTestDeeplinkClicked.invoke()
-            },
-            onClearDeeplinkClicked = {
-                onClearDeeplinkClicked.invoke()
-            },
-            onEnteredContent = { enteredContent ->
-                onEnteredContent.invoke(enteredContent)
-            }
-        )
-    } else {
-        HomeScreenStateWithDeepLinkHistory(
-            enteredContent = uiState.enteredContent,
-            onTestDeeplinkClicked = {
-                onTestDeeplinkClicked.invoke()
-            },
-            onClearDeeplinkClicked = {
-                onClearDeeplinkClicked.invoke()
-            },
-            onEnteredContent = { enteredContent ->
-                onEnteredContent.invoke(enteredContent)
-            },
-            historyDeepLinkItems = uiState.historyItems
-        )
+    if (uiState.showHistoryOrEmptyState) {
+        if (uiState.historyItems.isEmpty()) {
+            HomeScreenStateWithNoDeepLinkHistory(
+                enteredContent = uiState.enteredContent,
+                onTestDeeplinkClicked = {
+                    onTestDeeplinkClicked.invoke()
+                },
+                onClearDeeplinkClicked = {
+                    onClearDeeplinkClicked.invoke()
+                },
+                onEnteredContent = { enteredContent ->
+                    onEnteredContent.invoke(enteredContent)
+                }
+            )
+        } else {
+            HomeScreenStateWithDeepLinkHistory(
+                enteredContent = uiState.enteredContent,
+                onTestDeeplinkClicked = {
+                    onTestDeeplinkClicked.invoke()
+                },
+                onClearDeeplinkClicked = {
+                    onClearDeeplinkClicked.invoke()
+                },
+                onEnteredContent = { enteredContent ->
+                    onEnteredContent.invoke(enteredContent)
+                },
+                historyDeepLinkItems = uiState.historyItems
+            )
+        }
     }
 }
 

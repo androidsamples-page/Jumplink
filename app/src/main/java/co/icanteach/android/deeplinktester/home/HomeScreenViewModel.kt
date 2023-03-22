@@ -9,8 +9,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -65,7 +63,7 @@ class HomeScreenViewModel @Inject constructor(
             fetchDeepLinkHistory
                 .fetchDeepLinkHistory()
                 .collect { result ->
-                    val currentState = _uiState.value.copy(historyItems = result)
+                    val currentState = _uiState.value.onUpdateHistoryItem(result)
                     onUpdatePageViewState(currentState)
                 }
         }
