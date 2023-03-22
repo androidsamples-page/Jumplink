@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ class HomeScreenViewModel @Inject constructor(
     val eventFlow = _eventFlow.asSharedFlow()
 
     init {
-        fetchDeepLinkHistory()
+        observeDeepLinkHistory()
     }
 
     fun onAction(action: HomeScreenActions) {
@@ -39,13 +39,13 @@ class HomeScreenViewModel @Inject constructor(
             is HomeScreenActions.EnteredContent -> {
                 val currentState = _uiState.value
                 onUpdatePageViewState(currentState.onEnteredContent(newValue = action.value))
-                onSaveItemToHistory(action.value)
             }
             HomeScreenActions.TestEnteredContent -> {
                 val currentState = _uiState.value
                 viewModelScope.launch {
                     _eventFlow.emit(UiEvent.NavigateDeepLinkContent(currentState.enteredContent))
                 }
+                onSaveItemToHistory(currentState.enteredContent)
             }
         }
     }
@@ -60,13 +60,15 @@ class HomeScreenViewModel @Inject constructor(
         _uiState.value = pageViewState
     }
 
-    private fun fetchDeepLinkHistory() {
-        fetchDeepLinkHistory
-            .fetchDeepLinkHistory()
-            .onEach { result ->
-                val currentState = _uiState.value.copy(historyItems = result)
-                onUpdatePageViewState(currentState)
-            }.launchIn(viewModelScope)
+    private fun observeDeepLinkHistory() {
+        viewModelScope.launch {
+            fetchDeepLinkHistory
+                .fetchDeepLinkHistory()
+                .collect { result ->
+                    val currentState = _uiState.value.copy(historyItems = result)
+                    onUpdatePageViewState(currentState)
+                }
+        }
     }
 }
 
