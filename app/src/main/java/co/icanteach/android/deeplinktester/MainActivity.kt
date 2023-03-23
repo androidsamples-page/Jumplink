@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import co.icanteach.android.deeplinktester.home.HomeScreen
+import co.icanteach.android.deeplinktester.navigation.AppNavigator
 import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeScreen()
+                    AppNavigator()
                 }
             }
         }

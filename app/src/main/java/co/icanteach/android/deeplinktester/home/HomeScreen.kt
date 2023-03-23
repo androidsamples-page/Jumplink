@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.collectLatest
 @Composable
 fun HomeScreen(
     viewModel: HomeScreenViewModel = hiltViewModel(),
+    onSettingsItemClicked: () -> Unit,
 ) {
     val currentContext = LocalContext.current
     val uiState = viewModel.uiState.collectAsState().value
@@ -50,6 +51,9 @@ fun HomeScreen(
         },
         onTestDeeplinkFromHistoryClicked = { deepLinkItem ->
             viewModel.onAction(HomeScreenActions.TestHistoryItemContent(deepLinkItem))
+        },
+        onSettingsItemClicked = {
+            onSettingsItemClicked.invoke()
         }
     )
 }
@@ -61,6 +65,7 @@ fun HomeScreenResult(
     onTestDeeplinkClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
     onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
+    onSettingsItemClicked: () -> Unit,
 ) {
 
     if (uiState.shouldShowContent()) {
@@ -75,6 +80,9 @@ fun HomeScreenResult(
                 },
                 onEnteredContent = { enteredContent ->
                     onEnteredContent.invoke(enteredContent)
+                },
+                onSettingsItemClicked = {
+                    onSettingsItemClicked.invoke()
                 }
             )
         } else {
@@ -92,6 +100,9 @@ fun HomeScreenResult(
                 historyDeepLinkItems = uiState.historyItems,
                 onTestDeeplinkFromHistoryClicked = { deepLinkItem ->
                     onTestDeeplinkFromHistoryClicked.invoke(deepLinkItem)
+                },
+                onSettingsItemClicked = {
+                    onSettingsItemClicked.invoke()
                 }
             )
         }
@@ -132,7 +143,8 @@ fun HomeScreenResult_PreviewTemplate(
         onTestDeeplinkClicked = {},
         onClearDeeplinkClicked = {},
         onEnteredContent = {},
-        onTestDeeplinkFromHistoryClicked = {}
+        onTestDeeplinkFromHistoryClicked = {},
+        onSettingsItemClicked = {},
     )
 }
 
