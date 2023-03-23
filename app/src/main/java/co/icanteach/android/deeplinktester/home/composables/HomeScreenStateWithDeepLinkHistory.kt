@@ -31,6 +31,7 @@ fun HomeScreenStateWithDeepLinkHistory(
     historyDeepLinkItems: List<DeepLinkItem>,
     onEnteredContent: (String) -> Unit,
     onTestDeeplinkClicked: () -> Unit,
+    onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
     onClearDeeplinkClicked: () -> Unit,
 ) {
     Scaffold(topBar = {
@@ -77,7 +78,9 @@ fun HomeScreenStateWithDeepLinkHistory(
 
             items(historyDeepLinkItems) { deepLinkItem ->
                 Row(modifier = Modifier.fillMaxWidth()) {
-                    DeeplinkItemCard(deepLinkItem)
+                    DeeplinkItemCard(deepLinkItem) {
+                        onTestDeeplinkFromHistoryClicked.invoke(it)
+                    }
                 }
             }
         }
@@ -92,7 +95,8 @@ fun HomeScreenStateWithDeepLinkHistory_Preview() {
             historyDeepLinkItems = FakeDeepLinkItemFactory.createDeepLinkItems(),
             enteredContent = "Deeplink",
             onEnteredContent = {},
-            onTestDeeplinkClicked = {}
+            onTestDeeplinkClicked = {},
+            onTestDeeplinkFromHistoryClicked = {}
         ) {}
     }
 }

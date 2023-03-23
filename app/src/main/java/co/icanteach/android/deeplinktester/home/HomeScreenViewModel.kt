@@ -45,6 +45,11 @@ class HomeScreenViewModel @Inject constructor(
                 }
                 onSaveItemToHistory(currentState.enteredContent)
             }
+            is HomeScreenActions.TestHistoryItemContent -> {
+                viewModelScope.launch {
+                    _eventFlow.emit(UiEvent.NavigateDeepLinkContent(action.item.deeplink))
+                }
+            }
         }
     }
 

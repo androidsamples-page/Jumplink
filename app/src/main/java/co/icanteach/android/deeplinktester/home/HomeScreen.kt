@@ -9,6 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import co.icanteach.android.deeplinktester.DeepLinkItem
 import co.icanteach.android.deeplinktester.FakeDeepLinkItemFactory
 import co.icanteach.android.deeplinktester.home.composables.HomeScreenStateWithDeepLinkHistory
 import co.icanteach.android.deeplinktester.home.composables.HomeScreenStateWithNoDeepLinkHistory
@@ -49,6 +50,9 @@ fun HomeScreen(
         },
         onEnteredContent = { enteredContent ->
             viewModel.onAction(HomeScreenActions.EnteredContent(enteredContent))
+        },
+        onTestDeeplinkFromHistoryClicked = { deepLinkItem ->
+            viewModel.onAction(HomeScreenActions.TestHistoryItemContent(deepLinkItem))
         }
     )
 }
@@ -59,6 +63,7 @@ fun HomeScreenResult(
     onEnteredContent: (String) -> Unit,
     onTestDeeplinkClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
+    onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
 ) {
 
     if (uiState.showHistoryOrEmptyState) {
@@ -87,7 +92,10 @@ fun HomeScreenResult(
                 onEnteredContent = { enteredContent ->
                     onEnteredContent.invoke(enteredContent)
                 },
-                historyDeepLinkItems = uiState.historyItems
+                historyDeepLinkItems = uiState.historyItems,
+                onTestDeeplinkFromHistoryClicked = { deepLinkItem ->
+                    onTestDeeplinkFromHistoryClicked.invoke(deepLinkItem)
+                }
             )
         }
     }
@@ -101,15 +109,7 @@ fun HomeScreenResultWithDeepLinkHistory_Preview() {
             enteredContent = "DeepLink",
             historyItems = FakeDeepLinkItemFactory.createDeepLinkItems()
         )
-
-        HomeScreenResult(
-            uiState = uiState,
-            onTestDeeplinkClicked = {
-            },
-            onClearDeeplinkClicked = {
-            },
-            onEnteredContent = {}
-        )
+        HomeScreenResult_PreviewTemplate(uiState)
     }
 }
 
@@ -122,15 +122,21 @@ fun HomeScreenResultWithNoDeepLinkHistory_Preview() {
             historyItems = emptyList()
         )
 
-        HomeScreenResult(
-            uiState = uiState,
-            onTestDeeplinkClicked = {
-            },
-            onClearDeeplinkClicked = {
-            },
-            onEnteredContent = {}
-        )
+        HomeScreenResult_PreviewTemplate(uiState)
     }
+}
+
+@Composable
+fun HomeScreenResult_PreviewTemplate(
+    uiState: HomeScreenPageViewState
+) {
+    HomeScreenResult(
+        uiState = uiState,
+        onTestDeeplinkClicked = {},
+        onClearDeeplinkClicked = {},
+        onEnteredContent = {},
+        onTestDeeplinkFromHistoryClicked = {}
+    )
 }
 
 fun onNavigateDeepLinkContent(
