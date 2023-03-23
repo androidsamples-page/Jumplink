@@ -3,16 +3,25 @@ package co.icanteach.android.deeplinktester.home.composables
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.R
 import co.icanteach.android.deeplinktester.ui.ThemesPreview
 import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreenStateWithNoDeepLinkHistory(
     enteredContent: String,
@@ -23,12 +32,27 @@ fun HomeScreenStateWithNoDeepLinkHistory(
 ) {
     Scaffold(
         topBar = {
-            HomeTopAppBar(
-                appBarTitle = stringResource(id = R.string.app_name)
-            ) {
-                onSettingsItemClicked.invoke()
-            }
-        }
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        stringResource(id = R.string.app_name),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                },
+                actions = {
+                    IconButton(
+                        onClick = {
+                            onSettingsItemClicked.invoke()
+                        }) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(id = R.string.menu_item_settings)
+                        )
+                    }
+                }
+            )
+        },
     ) { contentPaddingValue ->
         LazyColumn(
             contentPadding = contentPaddingValue

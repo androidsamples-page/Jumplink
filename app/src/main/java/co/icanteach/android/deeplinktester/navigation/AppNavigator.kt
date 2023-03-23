@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import co.icanteach.android.deeplinktester.deeplinkhistory.presentation.DeepLinkHistoryScreen
 import co.icanteach.android.deeplinktester.home.HomeScreen
 import co.icanteach.android.deeplinktester.settings.SettingsScreen
 
@@ -25,7 +26,16 @@ fun AppNavigator() {
             route = Screens.SettingsScreen.route
         ) {
             SettingsScreen(
+                onNavigateHistoryScreenClicked = {
+                    navController.navigate(Screens.HistoryScreen.route)
+                }
             )
+        }
+
+        composable(
+            route = Screens.HistoryScreen.route
+        ) {
+            DeepLinkHistoryScreen()
         }
     }
 }
@@ -33,4 +43,5 @@ fun AppNavigator() {
 sealed class Screens(val route: String) {
     object HomeScreen : Screens("home_screen")
     object SettingsScreen : Screens("settings_screen")
+    object HistoryScreen : Screens("history_screen")
 }

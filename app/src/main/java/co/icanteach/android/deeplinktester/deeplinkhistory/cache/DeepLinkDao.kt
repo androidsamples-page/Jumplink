@@ -20,7 +20,9 @@ interface DeepLinkDao {
     @Insert
     suspend fun insertAll(item: DeepLinkEntity)
 
-
     @Query("DELETE FROM saved_deeplinks WHERE id = :deepLinkId")
     suspend fun delete(deepLinkId: String)
+
+    @Query("DELETE FROM saved_deeplinks")
+    suspend fun deleteAll()
 }

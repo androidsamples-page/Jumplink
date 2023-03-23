@@ -12,13 +12,15 @@ import co.icanteach.android.deeplinktester.ui.core.VerticalSpacer
 import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
 
 @Composable
-fun NavigateHistory() {
+fun NavigateHistory(
+    onNavigateHistoryScreenClicked: () -> Unit,
+) {
     SingleItem(
         title = stringResource(id = R.string.settings_navigate_history_title),
         description = stringResource(id = R.string.settings_navigate_history_desc),
         icon = painterResource(id = R.drawable.ic_history)
     ) {
-        // TODO inappreview.
+        onNavigateHistoryScreenClicked.invoke()
     }
 
     VerticalSpacer(value = 32.dp)
@@ -29,7 +31,9 @@ fun NavigateHistory() {
 fun NavigateHistory_Preview() {
     DeeplinkTesterTheme {
         Surface {
-            NavigateHistory()
+            NavigateHistory(
+                onNavigateHistoryScreenClicked = {}
+            )
         }
     }
 }
