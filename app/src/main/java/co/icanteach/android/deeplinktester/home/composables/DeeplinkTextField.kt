@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.R
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun DeeplinkTextField(
@@ -33,7 +33,7 @@ fun DeeplinkTextField(
 @ThemesPreview
 @Composable
 fun DeeplinkTextField_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         DeeplinkTextField(
             content = "DeepLink Content",
             onEnteredContent = {}

@@ -1,4 +1,4 @@
-package co.icanteach.android.deeplinktester.ui.theme
+package core.libraries.design.theme
 
 import android.app.Activity
 import android.os.Build
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun DeeplinkTesterTheme(
+fun JumpLinkTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

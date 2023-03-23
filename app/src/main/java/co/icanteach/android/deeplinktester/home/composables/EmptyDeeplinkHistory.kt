@@ -19,10 +19,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import co.icanteach.android.deeplinktester.R
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun EmptyDeepLinkHistory() {
@@ -74,7 +73,7 @@ fun EmptyDeepLinkHistory() {
 @ThemesPreview
 @Composable
 fun EmptyDeepLinkHistory_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         EmptyDeepLinkHistory()
     }
 }

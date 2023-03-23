@@ -6,9 +6,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.core.VerticalSpacer
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.composables.VerticalSpacer
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun SettingsContent(
@@ -35,7 +35,7 @@ fun SettingsContent(
 @ThemesPreview
 @Composable
 fun SettingsContent() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         Surface {
             SettingsContent(
                 title = "Share this application!",

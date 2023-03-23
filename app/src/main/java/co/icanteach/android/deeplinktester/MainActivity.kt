@@ -10,7 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import co.icanteach.android.deeplinktester.navigation.AppNavigator
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.theme.JumpLinkTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
             val userThemePreference = mainViewModel.userThemePreference.observeAsState()
 
-            DeeplinkTesterTheme(
+            JumpLinkTheme(
                 darkTheme = userThemePreference.value?.isDarkThemeSelected ?: false
             ) {
                 // A surface container using the 'background' color from the theme

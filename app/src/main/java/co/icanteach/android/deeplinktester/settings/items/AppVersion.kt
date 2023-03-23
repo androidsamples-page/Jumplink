@@ -7,8 +7,8 @@ import androidx.compose.ui.res.stringResource
 import co.icanteach.android.deeplinktester.BuildConfig
 import co.icanteach.android.deeplinktester.R
 import co.icanteach.android.deeplinktester.settings.composables.SingleItem
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun AppVersion() {
@@ -25,7 +25,7 @@ fun AppVersion() {
 @ThemesPreview
 @Composable
 private fun AppVersion_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         Surface {
             AppVersion()
         }

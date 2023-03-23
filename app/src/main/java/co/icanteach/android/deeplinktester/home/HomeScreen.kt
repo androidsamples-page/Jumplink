@@ -13,8 +13,8 @@ import co.icanteach.android.deeplinktester.DeepLinkItem
 import co.icanteach.android.deeplinktester.FakeDeepLinkItemFactory
 import co.icanteach.android.deeplinktester.home.composables.HomeScreenStateWithDeepLinkHistory
 import co.icanteach.android.deeplinktester.home.composables.HomeScreenStateWithNoDeepLinkHistory
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -112,7 +112,7 @@ fun HomeScreenResult(
 @Composable
 @ThemesPreview
 fun HomeScreenResultWithDeepLinkHistory_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         val uiState = HomeScreenPageViewState(
             enteredContent = "DeepLink",
             historyItems = FakeDeepLinkItemFactory.createDeepLinkItems()
@@ -124,7 +124,7 @@ fun HomeScreenResultWithDeepLinkHistory_Preview() {
 @Composable
 @ThemesPreview
 fun HomeScreenResultWithNoDeepLinkHistory_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         val uiState = HomeScreenPageViewState(
             enteredContent = "DeepLink",
             historyItems = emptyList()

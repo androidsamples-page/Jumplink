@@ -7,9 +7,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.R
 import co.icanteach.android.deeplinktester.settings.composables.SingleItem
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.core.VerticalSpacer
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.composables.VerticalSpacer
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun NavigateHistory(
@@ -29,7 +29,7 @@ fun NavigateHistory(
 @ThemesPreview
 @Composable
 fun NavigateHistory_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         Surface {
             NavigateHistory(
                 onNavigateHistoryScreenClicked = {}

@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import co.icanteach.android.deeplinktester.ui.core.HorizontalSpacer
-import co.icanteach.android.deeplinktester.ui.core.VerticalSpacer
+import core.libraries.design.composables.HorizontalSpacer
+import core.libraries.design.composables.VerticalSpacer
 
 @Composable
 internal fun SwitchableItem(

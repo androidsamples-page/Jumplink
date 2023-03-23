@@ -1,4 +1,4 @@
-package co.icanteach.android.deeplinktester.ui
+package core.libraries.design.preview
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.ui.tooling.preview.Preview

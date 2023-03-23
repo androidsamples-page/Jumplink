@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import co.icanteach.android.deeplinktester.ui.core.HorizontalSpacer
+import core.libraries.design.composables.HorizontalSpacer
 
 @Composable
 internal fun SingleItem(

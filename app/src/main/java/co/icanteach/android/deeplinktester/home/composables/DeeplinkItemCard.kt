@@ -13,8 +13,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.DeepLinkItem
 import co.icanteach.android.deeplinktester.FakeDeepLinkItemFactory
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun DeeplinkItemCard(
@@ -47,7 +47,7 @@ fun DeeplinkItemCard(
 @ThemesPreview
 @Composable
 fun DeeplinkItemCard_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         DeeplinkItemCard(FakeDeepLinkItemFactory.createDeepLinkItem()) {}
     }
 }

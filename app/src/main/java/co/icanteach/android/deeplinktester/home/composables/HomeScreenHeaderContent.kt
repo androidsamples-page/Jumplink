@@ -5,17 +5,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import co.icanteach.android.deeplinktester.R
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun HomeScreenHeaderContent(
@@ -53,7 +48,7 @@ fun HomeScreenHeaderContent(
 @ThemesPreview
 @Composable
 fun HomeScreenHeaderContent_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         HomeScreenHeaderContent(
             enteredContent = "DeepLink Content",
             onEnteredContent = {},

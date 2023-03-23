@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.DeepLinkItem
 import co.icanteach.android.deeplinktester.FakeDeepLinkItemFactory
 import co.icanteach.android.deeplinktester.R
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.core.HorizontalSpacer
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.composables.HorizontalSpacer
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun DeeplinkHistoryItemCard(
@@ -75,7 +75,7 @@ fun DeeplinkHistoryItemCard(
 @ThemesPreview
 @Composable
 fun DeeplinkHistoryItemCard_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         DeeplinkHistoryItemCard(
             FakeDeepLinkItemFactory.createDeepLinkItem(),
             onTestDeeplinkClicked = {},

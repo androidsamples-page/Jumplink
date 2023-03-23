@@ -1,4 +1,4 @@
-package co.icanteach.android.deeplinktester.ui.theme
+package core.libraries.design.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

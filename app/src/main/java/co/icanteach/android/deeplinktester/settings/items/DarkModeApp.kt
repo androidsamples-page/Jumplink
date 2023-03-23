@@ -7,9 +7,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.R
 import co.icanteach.android.deeplinktester.settings.composables.SwitchableItem
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.core.VerticalSpacer
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.composables.VerticalSpacer
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun DarkModeApp(
@@ -30,7 +30,7 @@ fun DarkModeApp(
 @ThemesPreview
 @Composable
 private fun DarkModeAppOff_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         Surface {
             DarkModeApp(isDarkThemeSelected = false) {}
         }
@@ -40,7 +40,7 @@ private fun DarkModeAppOff_Preview() {
 @ThemesPreview
 @Composable
 private fun DarkModeAppOn_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         Surface {
             DarkModeApp(isDarkThemeSelected = true) {}
         }

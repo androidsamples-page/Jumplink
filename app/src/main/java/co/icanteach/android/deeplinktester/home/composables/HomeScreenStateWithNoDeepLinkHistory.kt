@@ -17,8 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import co.icanteach.android.deeplinktester.R
-import co.icanteach.android.deeplinktester.ui.ThemesPreview
-import co.icanteach.android.deeplinktester.ui.theme.DeeplinkTesterTheme
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,7 +86,7 @@ fun HomeScreenStateWithNoDeepLinkHistory(
 @Composable
 @ThemesPreview
 fun HomeScreenStateWithNoDeepLinkHistory_Preview() {
-    DeeplinkTesterTheme {
+    JumpLinkTheme {
         HomeScreenStateWithNoDeepLinkHistory(
             enteredContent = "Deeplink",
             onEnteredContent = {},
