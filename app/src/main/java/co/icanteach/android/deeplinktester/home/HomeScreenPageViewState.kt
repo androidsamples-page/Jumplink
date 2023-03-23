@@ -5,7 +5,7 @@ import co.icanteach.android.deeplinktester.DeepLinkItem
 data class HomeScreenPageViewState constructor(
     val enteredContent: String = "",
     val historyItems: List<DeepLinkItem> = emptyList(),
-    val showHistoryOrEmptyState: Boolean = false
+    private val showHistoryOrEmptyState: Boolean = false
 ) {
 
     fun onClearEnteredContent(): HomeScreenPageViewState {
@@ -19,4 +19,11 @@ data class HomeScreenPageViewState constructor(
     fun onUpdateHistoryItem(newValue: List<DeepLinkItem>): HomeScreenPageViewState {
         return copy(historyItems = newValue, showHistoryOrEmptyState = true)
     }
+
+    fun shouldShowContent() = showHistoryOrEmptyState
+
+    fun isEnteredContentValid(): Boolean {
+        return enteredContent.isEmpty().not()
+    }
+
 }

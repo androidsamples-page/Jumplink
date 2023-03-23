@@ -33,9 +33,6 @@ fun HomeScreen(
                         deepLinkContent = event.deepLinkContent
                     )
                 }
-                is UiEvent.ShowError -> {
-                    // TODO add snackbar here
-                }
             }
         }
     }
@@ -66,7 +63,7 @@ fun HomeScreenResult(
     onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
 ) {
 
-    if (uiState.showHistoryOrEmptyState) {
+    if (uiState.shouldShowContent()) {
         if (uiState.historyItems.isEmpty()) {
             HomeScreenStateWithNoDeepLinkHistory(
                 enteredContent = uiState.enteredContent,

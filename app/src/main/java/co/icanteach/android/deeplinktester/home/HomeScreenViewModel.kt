@@ -40,10 +40,13 @@ class HomeScreenViewModel @Inject constructor(
             }
             HomeScreenActions.TestEnteredContent -> {
                 val currentState = _uiState.value
-                viewModelScope.launch {
-                    _eventFlow.emit(UiEvent.NavigateDeepLinkContent(currentState.enteredContent))
+
+                if (currentState.isEnteredContentValid()) {
+                    viewModelScope.launch {
+                        _eventFlow.emit(UiEvent.NavigateDeepLinkContent(currentState.enteredContent))
+                    }
+                    onSaveItemToHistory(currentState.enteredContent)
                 }
-                onSaveItemToHistory(currentState.enteredContent)
             }
             is HomeScreenActions.TestHistoryItemContent -> {
                 viewModelScope.launch {
@@ -77,5 +80,4 @@ class HomeScreenViewModel @Inject constructor(
 
 sealed class UiEvent {
     data class NavigateDeepLinkContent(val deepLinkContent: String) : UiEvent()
-    data class ShowError(val message: String) : UiEvent()
 }
