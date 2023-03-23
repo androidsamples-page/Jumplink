@@ -16,12 +16,16 @@ internal fun SingleItem(
     title: String,
     description: String,
     icon: Painter,
+    clickable: Boolean = true,
     onItemClicked: () -> Unit = {}
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onItemClicked),
+            .clickable(
+                enabled = clickable,
+                onClick = onItemClicked
+            ),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(

@@ -17,7 +17,8 @@ fun AppVersion() {
         description = stringResource(
             id = R.string.settings_app_version_desc, BuildConfig.VERSION_NAME
         ),
-        icon = painterResource(id = R.drawable.ic_version)
+        icon = painterResource(id = R.drawable.ic_version),
+        clickable = false
     )
 }
 
