@@ -1,23 +1,21 @@
 package co.icanteach.android.deeplinktester.settings
 
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import co.icanteach.android.deeplinktester.R
-import co.icanteach.android.deeplinktester.deeplinkhistory.presentation.DeepLinkHistoryPageViewState
 import co.icanteach.android.deeplinktester.settings.items.AppVersion
+import co.icanteach.android.deeplinktester.settings.items.DarkModeApp
 import co.icanteach.android.deeplinktester.settings.items.NavigateHistory
 import co.icanteach.android.deeplinktester.settings.items.RateTheApp
 import co.icanteach.android.deeplinktester.settings.items.ShareTheApp
@@ -28,20 +26,25 @@ fun SettingsScreen(
     onNavigateHistoryScreenClicked: () -> Unit,
 ) {
 
-    val scrollableState = rememberScrollState()
-    SettingsScreen(
-        scrollableState,
+    val uiState = viewModel.uiState.collectAsState().value
+
+    SettingsScreenResult(
+        uiState = uiState,
         onNavigateHistoryScreenClicked = {
             onNavigateHistoryScreenClicked.invoke()
+        },
+        onDarkThemeChanged = { isSelected ->
+            viewModel.onEvent(SettingsScreenActions.OnDarkThemeChanged(isDarkThemeEnabled = isSelected))
         }
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(
-    scrollableState: ScrollState,
+fun SettingsScreenResult(
+    uiState: SettingsScreenUiState,
     onNavigateHistoryScreenClicked: () -> Unit,
+    onDarkThemeChanged: (Boolean) -> Unit,
 ) {
 
     Scaffold(
@@ -57,7 +60,6 @@ fun SettingsScreen(
     ) { contentPaddingValue ->
         Column(
             modifier = Modifier
-                .verticalScroll(scrollableState)
                 .padding(contentPaddingValue)
                 .fillMaxSize()
                 .padding(16.dp)
@@ -65,6 +67,11 @@ fun SettingsScreen(
             NavigateHistory(onNavigateHistoryScreenClicked = {
                 onNavigateHistoryScreenClicked.invoke()
             })
+            DarkModeApp(
+                isDarkThemeSelected = uiState.isDarkThemeSelected,
+                onDarkThemeChanged = { isSelected ->
+                    onDarkThemeChanged.invoke(isSelected)
+                })
             ShareTheApp()
             RateTheApp()
             AppVersion()
