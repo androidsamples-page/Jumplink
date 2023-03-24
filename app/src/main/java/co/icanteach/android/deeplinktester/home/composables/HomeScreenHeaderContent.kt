@@ -18,6 +18,7 @@ fun HomeScreenHeaderContent(
     onEnteredContent: (String) -> Unit,
     onTestDeeplinkClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
+    onPasteContent: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -29,6 +30,9 @@ fun HomeScreenHeaderContent(
             content = enteredContent,
             onEnteredContent = { enteredContent ->
                 onEnteredContent.invoke(enteredContent)
+            },
+            onPasteContent = {
+                onPasteContent.invoke()
             }
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -53,7 +57,8 @@ fun HomeScreenHeaderContent_Preview() {
             enteredContent = "DeepLink Content",
             onEnteredContent = {},
             onClearDeeplinkClicked = {},
-            onTestDeeplinkClicked = {}
+            onTestDeeplinkClicked = {},
+            onPasteContent = {},
         )
     }
 }

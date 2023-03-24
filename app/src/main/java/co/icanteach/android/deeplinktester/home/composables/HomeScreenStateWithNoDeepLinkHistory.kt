@@ -29,6 +29,7 @@ fun HomeScreenStateWithNoDeepLinkHistory(
     onTestDeeplinkClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
     onSettingsItemClicked: () -> Unit,
+    onPasteContent: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -69,6 +70,9 @@ fun HomeScreenStateWithNoDeepLinkHistory(
                     },
                     onClearDeeplinkClicked = {
                         onClearDeeplinkClicked.invoke()
+                    },
+                    onPasteContent = {
+                        onPasteContent.invoke()
                     }
                 )
 
@@ -92,7 +96,8 @@ fun HomeScreenStateWithNoDeepLinkHistory_Preview() {
             onEnteredContent = {},
             onClearDeeplinkClicked = {},
             onTestDeeplinkClicked = {},
-            onSettingsItemClicked = {}
+            onSettingsItemClicked = {},
+            onPasteContent = {}
         )
     }
 }

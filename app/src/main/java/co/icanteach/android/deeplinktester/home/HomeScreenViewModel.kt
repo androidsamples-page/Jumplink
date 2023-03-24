@@ -49,9 +49,10 @@ class HomeScreenViewModel @Inject constructor(
                 }
             }
             is HomeScreenActions.TestHistoryItemContent -> {
-                viewModelScope.launch {
-                    _eventFlow.emit(UiEvent.NavigateDeepLinkContent(action.item.deeplink))
-                }
+                onUiEventUpdate(UiEvent.NavigateDeepLinkContent(action.item.deeplink))
+            }
+            HomeScreenActions.PasteContentClipboard -> {
+                onUiEventUpdate(UiEvent.PasteDeepLinkContent)
             }
         }
     }
@@ -64,6 +65,12 @@ class HomeScreenViewModel @Inject constructor(
 
     private fun onUpdatePageViewState(pageViewState: HomeScreenPageViewState) {
         _uiState.value = pageViewState
+    }
+
+    private fun onUiEventUpdate(uiEvent: UiEvent) {
+        viewModelScope.launch {
+            _eventFlow.emit(uiEvent)
+        }
     }
 
     private fun observeDeepLinkHistory() {
@@ -80,4 +87,5 @@ class HomeScreenViewModel @Inject constructor(
 
 sealed class UiEvent {
     data class NavigateDeepLinkContent(val deepLinkContent: String) : UiEvent()
+    object PasteDeepLinkContent : UiEvent()
 }

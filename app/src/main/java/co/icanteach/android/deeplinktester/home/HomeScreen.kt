@@ -6,6 +6,8 @@ import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.platform.ClipboardManager
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -24,6 +26,7 @@ fun HomeScreen(
 ) {
     val currentContext = LocalContext.current
     val uiState = viewModel.uiState.collectAsState().value
+    val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
@@ -33,6 +36,11 @@ fun HomeScreen(
                         context = currentContext,
                         deepLinkContent = event.deepLinkContent
                     )
+                }
+                UiEvent.PasteDeepLinkContent -> {
+                    clipboardManager.getText()?.text?.let { enteredContent ->
+                        viewModel.onAction(HomeScreenActions.EnteredContent(enteredContent))
+                    }
                 }
             }
         }
@@ -54,6 +62,9 @@ fun HomeScreen(
         },
         onSettingsItemClicked = {
             onSettingsItemClicked.invoke()
+        },
+        onPasteContent = {
+            viewModel.onAction(HomeScreenActions.PasteContentClipboard)
         }
     )
 }
@@ -66,6 +77,7 @@ fun HomeScreenResult(
     onClearDeeplinkClicked: () -> Unit,
     onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
     onSettingsItemClicked: () -> Unit,
+    onPasteContent: () -> Unit,
 ) {
 
     if (uiState.shouldShowContent()) {
@@ -83,6 +95,9 @@ fun HomeScreenResult(
                 },
                 onSettingsItemClicked = {
                     onSettingsItemClicked.invoke()
+                },
+                onPasteContent = {
+                    onPasteContent.invoke()
                 }
             )
         } else {
@@ -103,6 +118,9 @@ fun HomeScreenResult(
                 },
                 onSettingsItemClicked = {
                     onSettingsItemClicked.invoke()
+                },
+                onPasteContent = {
+                    onPasteContent.invoke()
                 }
             )
         }
@@ -145,6 +163,7 @@ fun HomeScreenResult_PreviewTemplate(
         onEnteredContent = {},
         onTestDeeplinkFromHistoryClicked = {},
         onSettingsItemClicked = {},
+        onPasteContent = {},
     )
 }
 
