@@ -27,12 +27,8 @@ fun DeepLinkHistoryWithResult(
             Row(modifier = Modifier.fillMaxWidth()) {
                 DeeplinkHistoryItemCard(
                     deepLinkItem,
-                    onDeleteDeeplinkItemClicked = { deepLinkItem ->
-                        onDeleteDeeplinkItemClicked.invoke(deepLinkItem)
-                    },
-                    onTestDeeplinkClicked = { deepLinkItem ->
-                        onTestDeeplinkClicked.invoke(deepLinkItem)
-                    }
+                    onDeleteDeeplinkItemClicked = onDeleteDeeplinkItemClicked::invoke,
+                    onTestDeeplinkClicked = onTestDeeplinkClicked::invoke
                 )
             }
         }

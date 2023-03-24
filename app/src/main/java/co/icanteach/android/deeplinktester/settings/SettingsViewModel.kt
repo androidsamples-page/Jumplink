@@ -34,6 +34,9 @@ class SettingsViewModel @Inject constructor(
     private fun initAccountScreen() {
         userPreferencesRepository
             .userPreferencesFlow.onEach { userPreferences ->
+                onUpdateAccountScreenState(
+                    SettingsScreenUiState(isDarkThemeSelected = userPreferences.isDarkThemeSelected)
+                )
             }.launchIn(viewModelScope)
     }
 

@@ -84,44 +84,24 @@ fun HomeScreenResult(
         if (uiState.historyItems.isEmpty()) {
             HomeScreenStateWithNoDeepLinkHistory(
                 enteredContent = uiState.enteredContent,
-                onTestDeeplinkClicked = {
-                    onTestDeeplinkClicked.invoke()
-                },
-                onClearDeeplinkClicked = {
-                    onClearDeeplinkClicked.invoke()
-                },
-                onEnteredContent = { enteredContent ->
-                    onEnteredContent.invoke(enteredContent)
-                },
-                onSettingsItemClicked = {
-                    onSettingsItemClicked.invoke()
-                },
-                onPasteContent = {
-                    onPasteContent.invoke()
-                }
+                onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
+                onEnteredContent = onEnteredContent::invoke,
+                onSettingsItemClicked = onSettingsItemClicked::invoke,
+                onPasteContent = onPasteContent::invoke
             )
         } else {
             HomeScreenStateWithDeepLinkHistory(
                 enteredContent = uiState.enteredContent,
-                onTestDeeplinkClicked = {
-                    onTestDeeplinkClicked.invoke()
-                },
-                onClearDeeplinkClicked = {
-                    onClearDeeplinkClicked.invoke()
-                },
+                onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
                 onEnteredContent = { enteredContent ->
-                    onEnteredContent.invoke(enteredContent)
+                    onEnteredContent(enteredContent)
                 },
                 historyDeepLinkItems = uiState.historyItems,
-                onTestDeeplinkFromHistoryClicked = { deepLinkItem ->
-                    onTestDeeplinkFromHistoryClicked.invoke(deepLinkItem)
-                },
-                onSettingsItemClicked = {
-                    onSettingsItemClicked.invoke()
-                },
-                onPasteContent = {
-                    onPasteContent.invoke()
-                }
+                onTestDeeplinkFromHistoryClicked = onTestDeeplinkFromHistoryClicked::invoke,
+                onSettingsItemClicked = onSettingsItemClicked::invoke,
+                onPasteContent = onPasteContent::invoke
             )
         }
     }

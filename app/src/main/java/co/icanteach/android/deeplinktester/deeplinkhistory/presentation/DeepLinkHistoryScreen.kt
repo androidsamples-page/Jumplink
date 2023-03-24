@@ -76,9 +76,8 @@ fun DeepLinkHistoryResultScreen(
             actions = {
                 if (uiState.historyItems.isNotEmpty()) {
                     IconButton(
-                        onClick = {
-                            onClearHistoryClicked.invoke()
-                        }) {
+                        onClick = onClearHistoryClicked::invoke
+                    ) {
                         Icon(
                             imageVector = Icons.Filled.Delete,
                             contentDescription = stringResource(id = R.string.history_page_delete_all)
@@ -95,12 +94,8 @@ fun DeepLinkHistoryResultScreen(
                 DeepLinkHistoryWithResult(
                     contentPaddingValue = paddingValue,
                     historyItems = uiState.historyItems,
-                    onDeleteDeeplinkItemClicked = { deepLinkItem ->
-                        onDeleteDeeplinkItemClicked.invoke(deepLinkItem)
-                    },
-                    onTestDeeplinkClicked = { deepLinkItem ->
-                        onTestDeeplinkClicked.invoke(deepLinkItem)
-                    }
+                    onDeleteDeeplinkItemClicked = onDeleteDeeplinkItemClicked::invoke,
+                    onTestDeeplinkClicked = onTestDeeplinkClicked::invoke
                 )
             }
         }

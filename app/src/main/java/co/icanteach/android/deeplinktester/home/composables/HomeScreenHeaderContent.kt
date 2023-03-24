@@ -28,21 +28,13 @@ fun HomeScreenHeaderContent(
         Spacer(modifier = Modifier.height(16.dp))
         DeeplinkTextField(
             content = enteredContent,
-            onEnteredContent = { enteredContent ->
-                onEnteredContent.invoke(enteredContent)
-            },
-            onPasteContent = {
-                onPasteContent.invoke()
-            }
+            onEnteredContent = onEnteredContent::invoke,
+            onPasteContent = onPasteContent::invoke
         )
         Spacer(modifier = Modifier.height(16.dp))
         DeepLinkActions(
-            onTestDeeplinkClicked = {
-                onTestDeeplinkClicked.invoke()
-            },
-            onClearDeeplinkClicked = {
-                onClearDeeplinkClicked.invoke()
-            }
+            onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+            onClearDeeplinkClicked = onClearDeeplinkClicked::invoke
         )
         Spacer(modifier = Modifier.height(32.dp))
     }

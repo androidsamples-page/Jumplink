@@ -18,10 +18,7 @@ const val DB_NAME = "deeplink_tester_database"
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DeepLinkDataModule {
-
-
     companion object {
-
 
         @Provides
         @Singleton

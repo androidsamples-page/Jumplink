@@ -73,15 +73,9 @@ fun HomeScreenStateWithDeepLinkHistory(
                     onEnteredContent = { enteredContent ->
                         onEnteredContent.invoke(enteredContent)
                     },
-                    onTestDeeplinkClicked = {
-                        onTestDeeplinkClicked.invoke()
-                    },
-                    onClearDeeplinkClicked = {
-                        onClearDeeplinkClicked.invoke()
-                    },
-                    onPasteContent = {
-                        onPasteContent.invoke()
-                    }
+                    onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                    onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
+                    onPasteContent = onPasteContent::invoke
                 )
             }
 

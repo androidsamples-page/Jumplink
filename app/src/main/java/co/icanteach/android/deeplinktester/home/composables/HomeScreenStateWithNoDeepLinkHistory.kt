@@ -65,15 +65,9 @@ fun HomeScreenStateWithNoDeepLinkHistory(
                     onEnteredContent = { enteredContent ->
                         onEnteredContent.invoke(enteredContent)
                     },
-                    onTestDeeplinkClicked = {
-                        onTestDeeplinkClicked.invoke()
-                    },
-                    onClearDeeplinkClicked = {
-                        onClearDeeplinkClicked.invoke()
-                    },
-                    onPasteContent = {
-                        onPasteContent.invoke()
-                    }
+                    onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                    onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
+                    onPasteContent = onPasteContent::invoke
                 )
 
                 Spacer(modifier = Modifier.height(64.dp))

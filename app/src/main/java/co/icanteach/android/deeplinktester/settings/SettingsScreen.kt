@@ -30,11 +30,11 @@ fun SettingsScreen(
 
     SettingsScreenResult(
         uiState = uiState,
-        onNavigateHistoryScreenClicked = {
-            onNavigateHistoryScreenClicked.invoke()
-        },
+        onNavigateHistoryScreenClicked = onNavigateHistoryScreenClicked::invoke,
         onDarkThemeChanged = { isSelected ->
-            viewModel.onEvent(SettingsScreenActions.OnDarkThemeChanged(isDarkThemeEnabled = isSelected))
+            viewModel.onEvent(
+                SettingsScreenActions.OnDarkThemeChanged(isDarkThemeEnabled = isSelected)
+            )
         }
     )
 }

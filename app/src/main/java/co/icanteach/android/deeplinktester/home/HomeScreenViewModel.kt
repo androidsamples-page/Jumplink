@@ -85,7 +85,7 @@ class HomeScreenViewModel @Inject constructor(
     }
 }
 
-sealed class UiEvent {
-    data class NavigateDeepLinkContent(val deepLinkContent: String) : UiEvent()
-    object PasteDeepLinkContent : UiEvent()
+sealed interface UiEvent {
+    data class NavigateDeepLinkContent(val deepLinkContent: String) : UiEvent
+    object PasteDeepLinkContent : UiEvent
 }
