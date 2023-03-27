@@ -19,6 +19,8 @@ import co.icanteach.android.deeplinktester.settings.items.DarkModeApp
 import co.icanteach.android.deeplinktester.settings.items.NavigateHistory
 import co.icanteach.android.deeplinktester.settings.items.RateTheApp
 import co.icanteach.android.deeplinktester.settings.items.ShareTheApp
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun SettingsScreen(
@@ -78,4 +80,21 @@ fun SettingsScreenResult(
         }
     }
 
+}
+
+@ThemesPreview
+@Composable
+fun SettingsScreen_Preview() {
+
+    val uiState = SettingsScreenUiState(
+        isDarkThemeSelected = false
+    )
+
+    JumpLinkTheme {
+        SettingsScreenResult(
+            uiState = uiState,
+            onNavigateHistoryScreenClicked = {},
+            onDarkThemeChanged = {},
+        )
+    }
 }

@@ -1,5 +1,6 @@
 package co.icanteach.android.deeplinktester.settings.items
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
@@ -15,15 +16,17 @@ import core.libraries.design.theme.JumpLinkTheme
 fun NavigateHistory(
     onNavigateHistoryScreenClicked: () -> Unit,
 ) {
-    SingleItem(
-        title = stringResource(id = R.string.settings_navigate_history_title),
-        description = stringResource(id = R.string.settings_navigate_history_desc),
-        icon = painterResource(id = R.drawable.ic_history)
-    ) {
-        onNavigateHistoryScreenClicked.invoke()
-    }
 
-    VerticalSpacer(value = 32.dp)
+    Column {
+        SingleItem(
+            title = stringResource(id = R.string.settings_navigate_history_title),
+            description = stringResource(id = R.string.settings_navigate_history_desc),
+            icon = painterResource(id = R.drawable.ic_history)
+        ) {
+            onNavigateHistoryScreenClicked.invoke()
+        }
+        VerticalSpacer(value = 32.dp)
+    }
 }
 
 @ThemesPreview

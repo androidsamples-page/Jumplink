@@ -1,5 +1,6 @@
 package core.libraries.design.composables
 
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -8,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 
 @Composable
-fun VerticalSpacer(value: Dp) {
+fun ColumnScope.VerticalSpacer(value: Dp) {
     Spacer(modifier = Modifier.height(value))
 }
 

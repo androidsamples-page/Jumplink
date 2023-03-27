@@ -1,5 +1,6 @@
 package co.icanteach.android.deeplinktester.settings.items
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
@@ -16,15 +17,18 @@ fun DarkModeApp(
     isDarkThemeSelected: Boolean,
     onDarkThemeChanged: (Boolean) -> (Unit)
 ) {
-    SwitchableItem(
-        title = stringResource(id = R.string.settings_dark_mode_title),
-        description = stringResource(id = R.string.settings_dark_mode_desc),
-        icon = painterResource(id = R.drawable.ic_dark_mode),
-        isChecked = isDarkThemeSelected,
-    ) { result ->
-        onDarkThemeChanged.invoke(result)
+
+    Column {
+        SwitchableItem(
+            title = stringResource(id = R.string.settings_dark_mode_title),
+            description = stringResource(id = R.string.settings_dark_mode_desc),
+            icon = painterResource(id = R.drawable.ic_dark_mode),
+            isChecked = isDarkThemeSelected,
+        ) { result ->
+            onDarkThemeChanged.invoke(result)
+        }
+        VerticalSpacer(value = 32.dp)
     }
-    VerticalSpacer(value = 32.dp)
 }
 
 @ThemesPreview
