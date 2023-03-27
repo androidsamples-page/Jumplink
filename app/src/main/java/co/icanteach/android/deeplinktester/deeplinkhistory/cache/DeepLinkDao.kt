@@ -11,8 +11,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DeepLinkDao {
 
-    @Query("SELECT * FROM saved_deeplinks")
+    @Query("SELECT * FROM saved_deeplinks ORDER BY created_date DESC")
     fun getAll(): Flow<List<DeepLinkEntity>>
+
+    @Query("SELECT * FROM saved_deeplinks ORDER BY created_date DESC LIMIT 5")
+    fun getLastInsertedDeepLinks(): Flow<List<DeepLinkEntity>>
 
     @Query("SELECT * FROM saved_deeplinks WHERE id > :deepLinkId")
     suspend fun findById(deepLinkId: String): DeepLinkEntity?

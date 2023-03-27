@@ -6,7 +6,7 @@
     <string name="button_clear_deeplink">Clear Deeplink</string>
     <string name="paste_deeplink">Paste Deeplink content</string>
 
-    <string name="text_title_deeplink_history">Last 10 used deeplink</string>
+    <string name="text_title_deeplink_history">Last 5 used deeplink</string>
     <string name="text_title_deeplink_history_no_item">No History</string>
     <string name="text_content_deeplink_history_no_item">Let\'s start to use #Jumplink</string>
 

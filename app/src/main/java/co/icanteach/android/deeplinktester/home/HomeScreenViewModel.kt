@@ -2,8 +2,8 @@ package co.icanteach.android.deeplinktester.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import co.icanteach.android.deeplinktester.deeplinkhistory.domain.FetchDeepLinkHistoryUseCase
 import co.icanteach.android.deeplinktester.deeplinkhistory.domain.SaveDeepLinkToHistoryUseCase
+import co.icanteach.android.deeplinktester.home.domain.FetchLastUsedDeepLinksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor(
-    private val fetchDeepLinkHistory: FetchDeepLinkHistoryUseCase,
+    private val fetchLastUsedDeepLinksUseCase: FetchLastUsedDeepLinksUseCase,
     private val saveItemToHistory: SaveDeepLinkToHistoryUseCase
 ) : ViewModel() {
 
@@ -59,7 +59,10 @@ class HomeScreenViewModel @Inject constructor(
 
     private fun onSaveItemToHistory(value: String) {
         viewModelScope.launch {
-            saveItemToHistory.saveItem(value)
+            try {
+                saveItemToHistory.saveItem(value)
+            } catch (_: Exception) {
+            }
         }
     }
 
@@ -75,7 +78,7 @@ class HomeScreenViewModel @Inject constructor(
 
     private fun observeDeepLinkHistory() {
         viewModelScope.launch {
-            fetchDeepLinkHistory
+            fetchLastUsedDeepLinksUseCase
                 .fetchDeepLinkHistory()
                 .collect { result ->
                     val currentState = _uiState.value.onUpdateHistoryItem(result)

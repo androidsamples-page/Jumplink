@@ -2,17 +2,20 @@ package co.icanteach.android.deeplinktester.deeplinkhistory.cache
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import co.icanteach.android.deeplinktester.DeepLinkItem
+import java.util.Date
 
 /**
  * Local representation of [DeepLink]
  */
 
-@Entity(tableName = "saved_deeplinks")
+@Entity(tableName = "saved_deeplinks", indices = [Index(value = ["deep_link"], unique = true)])
 data class DeepLinkEntity constructor(
     @PrimaryKey val id: String,
     @ColumnInfo(name = "deep_link") val deepLink: String,
+    @ColumnInfo(name = "created_date") val createdDate: Date? = null
 )
 
 /**
