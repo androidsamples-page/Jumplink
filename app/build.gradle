@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'co.icanteach.android.deeplinktester'
+    namespace 'co.icanteach.android.apps.jumplink'
     compileSdk 33
 
     defaultConfig {

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".DeepLinkTesterApplication"
+        android:name="co.icanteach.jumplink.DeepLinkTesterApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DeeplinkTester"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="co.icanteach.jumplink.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.DeeplinkTester">
             <intent-filter>
