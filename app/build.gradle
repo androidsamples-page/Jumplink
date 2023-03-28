@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "co.icanteach.android.deeplinktester"
+        applicationId "co.icanteach.android.apps.jumplink"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -87,6 +88,8 @@ dependencies {
     // datastore
     implementation 'androidx.datastore:datastore-core:1.0.0'
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    implementation platform('com.google.firebase:firebase-bom:31.3.0')
 }
 
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278138207193",
+    "project_id": "jumplink-3dceb",
+    "storage_bucket": "jumplink-3dceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278138207193:android:9fc28673f5f42c9e8c37c8",
+        "android_client_info": {
+          "package_name": "co.icanteach.android.apps.jumplink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278138207193-d7a1r8r1dneair8k8enh406piqgulto4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPnYAJRFeuELLI_xaVmgHQtuw2YwDpAMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278138207193-d7a1r8r1dneair8k8enh406piqgulto4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
