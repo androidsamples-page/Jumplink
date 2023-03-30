@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -57,6 +60,9 @@ fun SettingsScreenResult(
                         stringResource(id = R.string.settings_page_title)
                     )
                 },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(8.dp)
+                )
             )
         },
     ) { contentPaddingValue ->
@@ -74,8 +80,8 @@ fun SettingsScreenResult(
                 onDarkThemeChanged = { isSelected ->
                     onDarkThemeChanged.invoke(isSelected)
                 })
-            ShareTheApp()
-            RateTheApp()
+            // ShareTheApp()
+            // RateTheApp()
             AppVersion()
         }
     }

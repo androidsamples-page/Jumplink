@@ -1,12 +1,15 @@
 package co.icanteach.jumplink.deeplinkhistory.presentation
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -15,14 +18,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import co.icanteach.android.apps.jumplink.R
 import co.icanteach.jumplink.DeepLinkItem
 import co.icanteach.jumplink.FakeDeepLinkItemFactory
-import core.libraries.design.composables.HorizontalSpacer
+import core.libraries.design.composables.VerticalSpacer
 import core.libraries.design.preview.ThemesPreview
 import core.libraries.design.theme.JumpLinkTheme
 
@@ -32,45 +32,50 @@ fun DeeplinkHistoryItemCard(
     onTestDeeplinkClicked: (DeepLinkItem) -> Unit,
     onDeleteDeeplinkItemClicked: (DeepLinkItem) -> Unit,
 ) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        content = {
-            Row(
-                modifier = Modifier
-                    .padding(all = 8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconButton(
-                    modifier = Modifier.size(32.dp),
-                    onClick = {
-                        onDeleteDeeplinkItemClicked.invoke(deepLinkItem)
-                    }) {
-                    Icon(
-                        imageVector = Icons.Filled.Clear,
-                        contentDescription = stringResource(id = R.string.history_page_delete_all)
-                    )
+    Card {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(all = 16.dp)
+        ) {
+            Text(
+                text = deepLinkItem.deeplink,
+                style = MaterialTheme.typography.bodyLarge,
+                textDecoration = TextDecoration.Underline,
+                modifier = Modifier.clickable {
+                    onTestDeeplinkClicked.invoke(deepLinkItem)
                 }
-                HorizontalSpacer(value = 16.dp)
-                Text(
-                    text = AnnotatedString(deepLinkItem.deeplink),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable {
-                            onTestDeeplinkClicked.invoke(deepLinkItem)
-                        },
-                    textDecoration = TextDecoration.combine(
-                        listOf(
-                            TextDecoration.Underline
-                        )
-                    ),
-                    style = MaterialTheme.typography.labelSmall
-                )
+            )
+
+            VerticalSpacer(value = 8.dp)
+
+            Text(
+                text = deepLinkItem.createdDate,
+                style = MaterialTheme.typography.bodySmall
+            )
+
+            VerticalSpacer(value = 16.dp)
+
+            Box(
+                Modifier
+                    .fillMaxWidth()
+            ) {
+
+                Row(
+                    modifier = Modifier.align(Alignment.CenterEnd)
+                ) {
+                    IconButton(
+                        onClick = {
+                            onDeleteDeeplinkItemClicked.invoke(deepLinkItem)
+                        }) {
+                        Icon(Icons.Default.Delete, contentDescription = null)
+                    }
+                }
             }
         }
-    )
+    }
 }
+
 
 @ThemesPreview
 @Composable

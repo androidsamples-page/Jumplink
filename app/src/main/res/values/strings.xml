@@ -24,7 +24,7 @@
     <string name="settings_app_version_desc">Version: %1$s</string>
     <string name="settings_app_version_title">Current application version</string>
     <string name="settings_navigate_history_title">Manage your content</string>
-    <string name="settings_navigate_history_desc">See your DeepLink History! (Edit &amp; Delete)</string>
+    <string name="settings_navigate_history_desc">See your DeepLink History!</string>
 
     <!-- DeepLink History -->
     <string name="history_page_title">History</string>

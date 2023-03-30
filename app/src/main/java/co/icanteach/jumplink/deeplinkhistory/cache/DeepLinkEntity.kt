@@ -5,7 +5,9 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import co.icanteach.jumplink.DeepLinkItem
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 /**
  * Local representation of [DeepLinkItem]
@@ -24,5 +26,9 @@ data class DeepLinkEntity constructor(
  */
 fun DeepLinkEntity.asExternalModel() = DeepLinkItem(
     id = id,
-    deeplink = deepLink
+    deeplink = deepLink,
+    createdDate = SimpleDateFormat(
+        "dd/MM/yyyy",
+        Locale.getDefault()
+    ).format(createdDate ?: Date())
 )

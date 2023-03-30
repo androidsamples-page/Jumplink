@@ -6,18 +6,25 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import co.icanteach.android.apps.jumplink.R
 import co.icanteach.jumplink.DeepLinkItem
+import co.icanteach.jumplink.FakeDeepLinkItemFactory
 import co.icanteach.jumplink.home.onNavigateDeepLinkContent
+import core.libraries.design.preview.ThemesPreview
+import core.libraries.design.theme.JumpLinkTheme
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -72,7 +79,9 @@ fun DeepLinkHistoryResultScreen(
                     overflow = TextOverflow.Ellipsis
                 )
             },
-
+            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(16.dp)
+            ),
             actions = {
                 if (uiState.historyItems.isNotEmpty()) {
                     IconButton(
@@ -99,5 +108,21 @@ fun DeepLinkHistoryResultScreen(
                 )
             }
         }
+    }
+}
+
+@ThemesPreview
+@Composable
+fun DeepLinkHistoryResultScreen_Preview() {
+    val uiState = DeepLinkHistoryPageViewState()
+    uiState.onUpdateHistoryItem(FakeDeepLinkItemFactory.createDeepLinkItems())
+
+    JumpLinkTheme {
+        DeepLinkHistoryResultScreen(
+            uiState,
+            onClearHistoryClicked = {},
+            onTestDeeplinkClicked = {},
+            onDeleteDeeplinkItemClicked = {}
+        )
     }
 }
