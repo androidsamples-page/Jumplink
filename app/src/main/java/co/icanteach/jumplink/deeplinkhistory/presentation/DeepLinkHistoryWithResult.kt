@@ -3,8 +3,6 @@ package co.icanteach.jumplink.deeplinkhistory.presentation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -12,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import co.icanteach.jumplink.DeepLinkItem
 import co.icanteach.jumplink.FakeDeepLinkItemFactory
@@ -31,11 +28,12 @@ fun DeepLinkHistoryWithResult(
             .fillMaxSize()
             .padding(
                 top = contentPaddingValue.calculateTopPadding(),
-                bottom = contentPaddingValue.calculateBottomPadding(),
-                end = contentPaddingValue.calculateEndPadding(LayoutDirection.Ltr),
-                start = contentPaddingValue.calculateStartPadding(LayoutDirection.Ltr),
             ),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        contentPadding = PaddingValues(
+            horizontal = 16.dp,
+            vertical = 16.dp
+        ),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
         items(historyItems) { deepLinkItem ->
