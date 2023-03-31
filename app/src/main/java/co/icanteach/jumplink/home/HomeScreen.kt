@@ -1,5 +1,6 @@
 package co.icanteach.jumplink.home
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -151,7 +152,13 @@ fun onNavigateDeepLinkContent(
     deepLinkContent: String,
     context: Context
 ) {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = Uri.parse(deepLinkContent)
-    ContextCompat.startActivity(context, intent, null)
+    try {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(deepLinkContent)
+        ContextCompat.startActivity(context, intent, null)
+    } catch (ex : ActivityNotFoundException) {
+        /**
+         * TODO https://github.com/androidsamples-page/Jumplink/issues/8
+         */
+    }
 }
