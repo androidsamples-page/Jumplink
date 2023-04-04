@@ -36,3 +36,9 @@ Have an idea to improve this or got any Question? Let's connect 👇
 Drop a mail to:- muratcanbur@gmail.com
 
 <br />
+
+## Download
+
+*You can Install and test latest Jumplink app from below 👇*
+
+- [Jumplink Release 1](https://github.com/androidsamples-page/Jumplink/releases/download/Release_1/app-release-v0.5.apk)
