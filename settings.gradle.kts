@@ -1,4 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -13,5 +16,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "DeeplinkTester"
-include ':app'
-include ':design-core'
+
+include (":app")
+include (":design-core")
