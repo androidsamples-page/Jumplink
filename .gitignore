@@ -6,7 +6,7 @@
 /build
 
 # IDEA/Android Studio project files, because
-# the project can be imported from settings.gradle.kts
+# the project can be imported from settings.gradle.kts.kts
 .idea
 *.iml
 
