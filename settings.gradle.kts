@@ -15,7 +15,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "DeeplinkTester"
+rootProject.name = "Jumplink"
 
 include (":app")
 include (":design-core")
