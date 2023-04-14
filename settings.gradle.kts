@@ -17,5 +17,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Jumplink"
 
+
 include (":app")
 include (":design-core")
