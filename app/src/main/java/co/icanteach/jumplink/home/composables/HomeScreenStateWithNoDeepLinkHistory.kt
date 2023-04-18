@@ -29,7 +29,7 @@ import core.libraries.design.theme.JumpLinkTheme
 fun HomeScreenStateWithNoDeepLinkHistory(
     enteredContent: String,
     onEnteredContent: (String) -> Unit,
-    onTestDeeplinkClicked: () -> Unit,
+    onOpenAppClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
     onSettingsItemClicked: () -> Unit,
     onPasteContent: () -> Unit,
@@ -71,7 +71,7 @@ fun HomeScreenStateWithNoDeepLinkHistory(
                     onEnteredContent = { enteredContent ->
                         onEnteredContent.invoke(enteredContent)
                     },
-                    onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                    onOpenAppClicked = onOpenAppClicked::invoke,
                     onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
                     onPasteContent = onPasteContent::invoke
                 )
@@ -95,7 +95,7 @@ fun HomeScreenStateWithNoDeepLinkHistory_Preview() {
             enteredContent = "Deeplink",
             onEnteredContent = {},
             onClearDeeplinkClicked = {},
-            onTestDeeplinkClicked = {},
+            onOpenAppClicked = {},
             onSettingsItemClicked = {},
             onPasteContent = {}
         )

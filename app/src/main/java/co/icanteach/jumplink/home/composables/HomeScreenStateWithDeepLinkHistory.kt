@@ -36,7 +36,7 @@ fun HomeScreenStateWithDeepLinkHistory(
     enteredContent: String,
     historyDeepLinkItems: List<DeepLinkItem>,
     onEnteredContent: (String) -> Unit,
-    onTestDeeplinkClicked: () -> Unit,
+    onOpenAppClicked: () -> Unit,
     onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
     onClearDeeplinkClicked: () -> Unit,
     onSettingsItemClicked: () -> Unit,
@@ -79,7 +79,7 @@ fun HomeScreenStateWithDeepLinkHistory(
                     onEnteredContent = { enteredContent ->
                         onEnteredContent.invoke(enteredContent)
                     },
-                    onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                    onOpenAppClicked = onOpenAppClicked::invoke,
                     onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
                     onPasteContent = onPasteContent::invoke
                 )
@@ -117,7 +117,7 @@ fun HomeScreenStateWithDeepLinkHistory_Preview() {
             historyDeepLinkItems = FakeDeepLinkItemFactory.createDeepLinkItems(),
             enteredContent = "Deeplink",
             onEnteredContent = {},
-            onTestDeeplinkClicked = {},
+            onOpenAppClicked = {},
             onClearDeeplinkClicked = {},
             onTestDeeplinkFromHistoryClicked = {},
             onSettingsItemClicked = {},

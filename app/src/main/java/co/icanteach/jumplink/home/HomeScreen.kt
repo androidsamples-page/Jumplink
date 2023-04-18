@@ -49,8 +49,8 @@ fun HomeScreen(
 
     HomeScreenResult(
         uiState = uiState,
-        onTestDeeplinkClicked = {
-            viewModel.onAction(HomeScreenActions.TestEnteredContent)
+        onOpenAppClicked = {
+            viewModel.onAction(HomeScreenActions.OpenAppClicked)
         },
         onClearDeeplinkClicked = {
             viewModel.onAction(HomeScreenActions.ClearEnteredContent)
@@ -74,7 +74,7 @@ fun HomeScreen(
 fun HomeScreenResult(
     uiState: HomeScreenPageViewState,
     onEnteredContent: (String) -> Unit,
-    onTestDeeplinkClicked: () -> Unit,
+    onOpenAppClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
     onTestDeeplinkFromHistoryClicked: (DeepLinkItem) -> Unit,
     onSettingsItemClicked: () -> Unit,
@@ -85,7 +85,7 @@ fun HomeScreenResult(
         if (uiState.historyItems.isEmpty()) {
             HomeScreenStateWithNoDeepLinkHistory(
                 enteredContent = uiState.enteredContent,
-                onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                onOpenAppClicked = onOpenAppClicked::invoke,
                 onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
                 onEnteredContent = onEnteredContent::invoke,
                 onSettingsItemClicked = onSettingsItemClicked::invoke,
@@ -94,7 +94,7 @@ fun HomeScreenResult(
         } else {
             HomeScreenStateWithDeepLinkHistory(
                 enteredContent = uiState.enteredContent,
-                onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+                onOpenAppClicked = onOpenAppClicked::invoke,
                 onClearDeeplinkClicked = onClearDeeplinkClicked::invoke,
                 onEnteredContent = { enteredContent ->
                     onEnteredContent(enteredContent)
@@ -139,7 +139,7 @@ fun HomeScreenResult_PreviewTemplate(
 ) {
     HomeScreenResult(
         uiState = uiState,
-        onTestDeeplinkClicked = {},
+        onOpenAppClicked = {},
         onClearDeeplinkClicked = {},
         onEnteredContent = {},
         onTestDeeplinkFromHistoryClicked = {},

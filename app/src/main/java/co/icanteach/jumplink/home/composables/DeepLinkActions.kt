@@ -14,7 +14,7 @@ import core.libraries.design.theme.JumpLinkTheme
 
 @Composable
 fun DeepLinkActions(
-    onTestDeeplinkClicked: () -> Unit,
+    onOpenAppClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
 ) {
     Row(
@@ -22,9 +22,9 @@ fun DeepLinkActions(
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         FilledTonalButton(onClick = {
-            onTestDeeplinkClicked.invoke()
+            onOpenAppClicked.invoke()
         }) {
-            Text(text = stringResource(id = R.string.button_test_deeplink))
+            Text(text = stringResource(id = R.string.button_open_app))
         }
         FilledTonalButton(onClick = {
             onClearDeeplinkClicked.invoke()
@@ -39,7 +39,7 @@ fun DeepLinkActions(
 fun DeepLinkActions_Preview() {
     JumpLinkTheme {
         DeepLinkActions(
-            onTestDeeplinkClicked = {},
+            onOpenAppClicked = {},
             onClearDeeplinkClicked = {}
         )
     }

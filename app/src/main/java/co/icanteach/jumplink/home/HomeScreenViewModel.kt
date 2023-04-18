@@ -38,7 +38,7 @@ class HomeScreenViewModel @Inject constructor(
                 val currentState = _uiState.value
                 onUpdatePageViewState(currentState.onEnteredContent(newValue = action.value))
             }
-            HomeScreenActions.TestEnteredContent -> {
+            HomeScreenActions.OpenAppClicked -> {
                 val currentState = _uiState.value
 
                 if (currentState.isEnteredContentValid()) {

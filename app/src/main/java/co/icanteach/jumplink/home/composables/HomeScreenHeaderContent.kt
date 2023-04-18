@@ -16,7 +16,7 @@ import core.libraries.design.theme.JumpLinkTheme
 fun HomeScreenHeaderContent(
     enteredContent: String,
     onEnteredContent: (String) -> Unit,
-    onTestDeeplinkClicked: () -> Unit,
+    onOpenAppClicked: () -> Unit,
     onClearDeeplinkClicked: () -> Unit,
     onPasteContent: () -> Unit,
 ) {
@@ -33,7 +33,7 @@ fun HomeScreenHeaderContent(
         )
         Spacer(modifier = Modifier.height(16.dp))
         DeepLinkActions(
-            onTestDeeplinkClicked = onTestDeeplinkClicked::invoke,
+            onOpenAppClicked = onOpenAppClicked::invoke,
             onClearDeeplinkClicked = onClearDeeplinkClicked::invoke
         )
         Spacer(modifier = Modifier.height(32.dp))
@@ -49,7 +49,7 @@ fun HomeScreenHeaderContent_Preview() {
             enteredContent = "DeepLink Content",
             onEnteredContent = {},
             onClearDeeplinkClicked = {},
-            onTestDeeplinkClicked = {},
+            onOpenAppClicked = {},
             onPasteContent = {},
         )
     }
