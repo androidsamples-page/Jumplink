@@ -17,11 +17,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import co.icanteach.android.apps.jumplink.R
+import co.icanteach.jumplink.settings.items.AppSourceCode
 import co.icanteach.jumplink.settings.items.AppVersion
 import co.icanteach.jumplink.settings.items.DarkModeApp
 import co.icanteach.jumplink.settings.items.NavigateHistory
-import co.icanteach.jumplink.settings.items.RateTheApp
-import co.icanteach.jumplink.settings.items.ShareTheApp
 import core.libraries.design.preview.ThemesPreview
 import core.libraries.design.theme.JumpLinkTheme
 
@@ -29,12 +28,14 @@ import core.libraries.design.theme.JumpLinkTheme
 fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel(),
     onNavigateHistoryScreenClicked: () -> Unit,
+    onAppSourceCodeNavigationClicked: () -> Unit,
 ) {
 
     val uiState = viewModel.uiState.collectAsState().value
 
     SettingsScreenResult(
         uiState = uiState,
+        onAppSourceCodeNavigationClicked = onAppSourceCodeNavigationClicked::invoke,
         onNavigateHistoryScreenClicked = onNavigateHistoryScreenClicked::invoke,
         onDarkThemeChanged = { isSelected ->
             viewModel.onEvent(
@@ -49,6 +50,7 @@ fun SettingsScreen(
 fun SettingsScreenResult(
     uiState: SettingsScreenUiState,
     onNavigateHistoryScreenClicked: () -> Unit,
+    onAppSourceCodeNavigationClicked: () -> Unit,
     onDarkThemeChanged: (Boolean) -> Unit,
 ) {
 
@@ -75,6 +77,12 @@ fun SettingsScreenResult(
             NavigateHistory(onNavigateHistoryScreenClicked = {
                 onNavigateHistoryScreenClicked.invoke()
             })
+
+            AppSourceCode(
+                onAppSourceCodeNavigationClicked = {
+                    onAppSourceCodeNavigationClicked.invoke()
+                }
+            )
             DarkModeApp(
                 isDarkThemeSelected = uiState.isDarkThemeSelected,
                 onDarkThemeChanged = { isSelected ->
@@ -100,6 +108,7 @@ fun SettingsScreen_Preview() {
         SettingsScreenResult(
             uiState = uiState,
             onNavigateHistoryScreenClicked = {},
+            onAppSourceCodeNavigationClicked = {},
             onDarkThemeChanged = {},
         )
     }

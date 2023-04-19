@@ -29,4 +29,6 @@
     <!-- DeepLink History -->
     <string name="history_page_title">History</string>
     <string name="history_page_delete_all">Delete All</string>
+    <string name="settings_app_source_title">Open Source Application</string>
+    <string name="settings_app_source_desc">See #Jumplink Source Code</string>
 </resources>

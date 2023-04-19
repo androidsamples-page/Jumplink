@@ -19,6 +19,7 @@ compose-bom = "2023.01.00"
 compose-material3 = "1.1.0-beta01"
 hiltCompose = "1.0.0"
 navigation = "2.5.3"
+browser = "1.4.0"
 
 junit4 = "4.13.2"
 androidxTestExt = "1.1.5"
@@ -54,6 +55,7 @@ compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltCompose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+browser = { module = "androidx.browser:browser", version.ref = "browser" }
 
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }

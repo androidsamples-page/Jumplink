@@ -1,6 +1,7 @@
 package co.icanteach.jumplink.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -11,6 +12,7 @@ import co.icanteach.jumplink.settings.SettingsScreen
 @Composable
 fun AppNavigator() {
     val navController = rememberNavController()
+    val context = LocalContext.current
 
     NavHost(
         navController = navController,
@@ -28,6 +30,9 @@ fun AppNavigator() {
             SettingsScreen(
                 onNavigateHistoryScreenClicked = {
                     navController.navigate(Screens.HistoryScreen.route)
+                },
+                onAppSourceCodeNavigationClicked = {
+                    ChromeTabNavigator.openAppSourceCode(context)
                 }
             )
         }
